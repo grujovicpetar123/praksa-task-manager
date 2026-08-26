@@ -1,0 +1,116 @@
+
+
+
+
+*** TABELA KORISNICI
+INSERT INTO public.korisnici
+(datum_kreiranja, ime, email, aktivan, prezime)
+VALUES(now(), 'Marko', 'markomarkovic@gmail.com', false, 'Markovic');
+INSERT INTO public.korisnici
+(datum_kreiranja, ime, email, aktivan, prezime)
+VALUES(now(), 'Dusan', 'dusandusanovac@gmail.com', true, 'Dusanovac');
+INSERT INTO public.korisnici
+(datum_kreiranja, ime, email, aktivan, prezime)
+VALUES(now(), 'Mirjana', 'mirjanamijuskovic@gmail.com', true, 'Mijuskovic');
+INSERT INTO public.korisnici
+(datum_kreiranja, ime, email, aktivan, prezime)
+VALUES(now(), 'Dragan', 'dragankozovic@gmail.com', false, 'Kozovic');
+INSERT INTO public.korisnici
+(datum_kreiranja, ime, email, aktivan, prezime)
+VALUES(now(), 'Luka', 'lukakulizic@gmail.com', true, 'Kulizic');
+INSERT INTO public.korisnici
+(datum_kreiranja, ime, email, aktivan, prezime)
+VALUES(now(), 'Nikolina', 'nikolinablagojevic@gmail.com', false, 'Blagojevic');
+INSERT INTO public.korisnici
+(datum_kreiranja, ime, email, aktivan, prezime)
+VALUES(now(), 'Mirko', 'mirkomirkovic@gmail.com', true, 'Mirkovic');
+INSERT INTO public.korisnici
+(datum_kreiranja, ime, email, aktivan, prezime)
+VALUES(now(), 'Vanja', 'vanjabrocic@gmail.com', false, 'Brocic');
+INSERT INTO public.korisnici
+(datum_kreiranja, ime, email, aktivan, prezime)
+VALUES(now(), 'Dragica', 'dragicacicovic@gmail.com', true, 'Cicovic');
+INSERT INTO public.korisnici
+(datum_kreiranja, ime, email, aktivan, prezime)
+VALUES(now(), 'Dusica', 'dusicazizovic@gmail.com', true, 'Zizovic');
+
+***TABELA PROJEKTI
+INSERT INTO public.projekti
+(naziv, opis, datum_kreiranja, aktivan)
+VALUES('Tehnicka Skola', 'Odrzavanje sajta za tehnicku srednju skolu', now(), true);
+INSERT INTO public.projekti
+(naziv, opis, datum_kreiranja, aktivan)
+VALUES('Desktop App Opsta bolnica Cacak', 'Pravljenje desktop aplikacije za analizu krvi u bolnici', now(), true);
+INSERT INTO public.projekti
+(naziv, opis, datum_kreiranja, aktivan)
+VALUES('Mobile App Kafic Republic', 'Mobilna aplikacija za kafic Republic', now(), false);
+INSERT INTO public.projekti
+(naziv, opis, datum_kreiranja, aktivan)
+VALUES('KK Borac Cacak', 'Pravljenje sajta za KK Borac Cacak', now(), false);
+INSERT INTO public.projekti
+(naziv, opis, datum_kreiranja, aktivan)
+VALUES('Parking Cacak', 'Complete JKP Parking Servis Cacak', now(), true);
+INSERT INTO public.projekti
+(naziv, opis, datum_kreiranja, aktivan)
+VALUES('GOGO', 'Odrzavanje GOG aplikacije', now(), true);
+INSERT INTO public.projekti
+(naziv, opis, datum_kreiranja, aktivan)
+VALUES('Web Shop', 'Razvijanje online Web prodavnice', now(), true);
+INSERT INTO public.projekti
+(naziv, opis, datum_kreiranja, aktivan)
+VALUES('Mobilna aplikacija za finansije', 'Aplikacija za pracenje licnih finansija', now(), false);
+INSERT INTO public.projekti
+(naziv, opis, datum_kreiranja, aktivan)
+VALUES('Marketing kampanja', 'Digitalna kampanja za lansiranje novog proizvoda', now(), true);
+
+***Tabela zadaci
+INSERT INTO public.zadaci
+(naziv, opis, status_id, prioritet_id, rok, datum_kreiranja, korisnik_id, projekti_id)
+VALUES('Postaviti logo', 'Postavljanje logoa na naslovnu stranu', 3, 1, '2026-09-10', now(), 1, 1);
+INSERT INTO public.zadaci
+(naziv, opis, status_id, prioritet_id, rok, datum_kreiranja, korisnik_id, projekti_id)
+VALUES('Funkcionalnost za analizu alkogola', 'Osmisliti i napraviti sekciju za analizu krvi', 2, 2, '2026-09-11', now(), 2, 2);
+INSERT INTO public.zadaci
+(naziv, opis, status_id, prioritet_id, rok, datum_kreiranja, korisnik_id, projekti_id)
+VALUES('Meni za kafic', 'Dizajniranje Menu dela na front-u', 1, 3, '2026-11-12', now(), 2, 3);
+INSERT INTO public.zadaci
+(naziv, opis, status_id, prioritet_id, rok, datum_kreiranja, korisnik_id, projekti_id)
+VALUES('Podesavanja baze', 'Podesavanja baze za sajt', 3, 1, '2026-11-25', now(), 3, 4);
+INSERT INTO public.zadaci
+(naziv, opis, status_id, prioritet_id, rok, datum_kreiranja, korisnik_id, projekti_id)
+VALUES('Pisanje dokumentacije', 'Pisanje dokumentacije', 2, 2, '2026-12-17', now(), 4, 5);
+INSERT INTO public.zadaci
+(naziv, opis, status_id, prioritet_id, rok, datum_kreiranja, korisnik_id, projekti_id)
+VALUES('Maintenance', 'Maintenance za GOG aplikaciju', 1, 3, '2026-12-19', now(), 5, 6);
+INSERT INTO public.zadaci
+(naziv, opis, status_id, prioritet_id, rok, datum_kreiranja, korisnik_id, projekti_id)
+VALUES('Migracija tabela', 'Migracija tabela', 3, 1, '2027-02-08', now(), 5, 7);
+INSERT INTO public.zadaci
+(naziv, opis, status_id, prioritet_id, rok, datum_kreiranja, korisnik_id, projekti_id)
+VALUES('Optimizacija', 'Optimizacija upita za sajt', 2, 2, '2027-01-01', now(), 5, 8);
+INSERT INTO public.zadaci
+(naziv, opis, status_id, prioritet_id, rok, datum_kreiranja, korisnik_id, projekti_id)
+VALUES('Dizajniranje bilborda', 'Dizajniranje bilborda za kampanju', 1, 3, '2027-05-08', now(), 6, 9);
+INSERT INTO public.zadaci
+(naziv, opis, status_id, prioritet_id, rok, datum_kreiranja, korisnik_id, projekti_id)
+VALUES('Modul za zakazivanje', 'Modul za zakazivanje pregleda', 3, 1, '2027-08-08', now(), 6, 2);
+INSERT INTO public.zadaci
+(naziv, opis, status_id, prioritet_id, rok, datum_kreiranja, korisnik_id, projekti_id)
+VALUES('Izdavanje recepata', 'Funkcionalnost za izdavanje recepata', 2, 2, '2027-02-23', now(), 7, 4);
+INSERT INTO public.zadaci
+(naziv, opis, status_id, prioritet_id, rok, datum_kreiranja, korisnik_id, projekti_id)
+VALUES('Izvestaji', 'Izvestaji za ministartstvo za JKP Parking Servis', 1, 3, '2027-03-03', now(), 8, 5);
+INSERT INTO public.zadaci
+(naziv, opis, status_id, prioritet_id, rok, datum_kreiranja, korisnik_id, projekti_id)
+VALUES('Modul za raspored utakmica', 'Raspored utakmica za ovu sezonu KK Borac Cacak', 3, 1, '2026-09-01', now(), 9, 4);
+INSERT INTO public.zadaci
+(naziv, opis, status_id, prioritet_id, rok, datum_kreiranja, korisnik_id, projekti_id)
+VALUES('Prodaja ulaznica', 'Prodaja utakmica online KK Borac Caca', 2, 2, '2027-07-07', now(), 8, 4);
+
+
+
+**Brisanje
+truncate zadaci;
+**Vracanje na 1
+SELECT setval(pg_get_serial_sequence('zadaci', 'id'), coalesce(MAX(id), 1))
+from zadaci;
