@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace PraksaApi.Models;
+namespace PraksaApi.Models.DTO;
 
-public partial class Komentari:Base
+public class KomentariDTO
 {
 
 
@@ -15,7 +15,5 @@ public partial class Komentari:Base
 
     public DateTime? DatumKreiranja { get; set; }
 
-    public virtual Korisnici? Korisnik { get; set; }
-
-    public virtual Zadaci? Zadatak { get; set; }
+   
 }

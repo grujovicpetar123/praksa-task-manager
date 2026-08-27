@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace PraksaApi.Models;
 
-public partial class Projekti:Base
+public class ProjektiDTO
 {
     
 
@@ -15,5 +15,4 @@ public partial class Projekti:Base
 
     public bool? Aktivan { get; set; }
 
-    public virtual ICollection<Zadaci> Zadacis { get; set; } = new List<Zadaci>();
 }

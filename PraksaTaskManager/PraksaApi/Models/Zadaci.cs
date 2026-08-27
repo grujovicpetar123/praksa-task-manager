@@ -15,7 +15,7 @@ public partial class Zadaci:Base
 
     public int? PrioritetId { get; set; }
 
-    public DateOnly? Rok { get; set; }
+    public DateTime? Rok { get; set; }
 
     public DateTime? DatumKreiranja { get; set; }
 
