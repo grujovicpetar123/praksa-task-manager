@@ -59,6 +59,19 @@ public class StatusController : ControllerBase
         _context.SaveChanges();
         return NoContent();
     }
+    [HttpPost("BrojZadatakPoStatusu")]
+    public ActionResult<IEnumerable<object>> BrojZadPoStatusu()
+    {
+        var rezultat = _context.Statusi
+        .Select(s => new 
+        {
+            s.Naziv,
+            BrojZadataka=s.Zadacis.Count()
+            })
+        .OrderByDescending(s=>s.BrojZadataka)
+        .ToList();
+        return Ok(rezultat);
+    }
 
 
 }

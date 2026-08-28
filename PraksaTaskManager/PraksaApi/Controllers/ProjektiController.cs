@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PraksaApi.Data;
 using PraksaApi.Models;
 using PraksaApi.Models.DTO;
@@ -63,6 +64,78 @@ public class ProjektiController : ControllerBase
         projekti1.Aktivan = projekti.Aktivan;
         _context.SaveChanges();
         return NoContent();
+    }
+    [HttpGet("GetAktivniProjekti")]
+    public ActionResult<IEnumerable<ProjektiDTO>> AktivniProjekti()
+    {
+        var rezultat = _context.Projekti
+        .Where(p => p.Aktivan == true)
+        .Select(p => new ProjektiDTO
+        {
+            Naziv=p.Naziv,
+            Opis=p.Opis,
+            DatumKreiranja=p.DatumKreiranja,
+            Aktivan=p.Aktivan
+            })
+        .ToList();
+        return Ok(rezultat);
+    }
+    [HttpPost("BrojZadatakPoProjektu")]
+    public ActionResult<IEnumerable<object>> BrojZadPoProj()
+    {
+        var rezultat = _context.Projekti
+        .Select(p => new 
+        {
+            p.Naziv,
+            p.Opis,
+            BrojZadataka=p.Zadacis.Count()
+            })
+        .OrderByDescending(p=>p.BrojZadataka)
+        .ToList();
+        return Ok(rezultat);
+    }
+    [HttpPost("ProjektiBezZadataka")]
+    public ActionResult<IEnumerable<object>> ProjektiBezZad()
+    {
+        var rezultat = _context.Projekti
+        .Include(p=>p.Zadacis)
+        .Where(p=>!p.Zadacis.Any())
+        .Select(p => new 
+        {
+            p.Naziv,
+            p.Opis,
+            })
+        .ToList();
+        return Ok(rezultat);
+    }
+    [HttpPost("ProjektiSaNajviseZad")]
+    public ActionResult<IEnumerable<object>> MaxZadPoProj()
+    {
+        var rezultat = _context.Projekti
+        .Include(p=>p.Zadacis)
+        .Select(p => new 
+        {
+            p.Naziv,
+            p.Opis,
+            BrojZadataka=p.Zadacis.Count()
+            })
+        .OrderByDescending(p=>p.BrojZadataka)
+        .First();
+        return Ok(rezultat);
+    }
+    [HttpPost("ProjektiSaNajviseNezavrsenihZad")]
+    public ActionResult<IEnumerable<object>> MaxNezZadPoProj()
+    {
+        var rezultat = _context.Projekti
+        .Select(p => new 
+        {
+            p.Naziv,
+            p.Opis,
+            BrojNezavrsenihZadataka=p.Zadacis.Count(z=>z.Status.Naziv!="ZAVRSEN")
+            })
+        .OrderByDescending(p=>p.BrojNezavrsenihZadataka)
+        .ToList();
+        return Ok(rezultat);
     }
 
 

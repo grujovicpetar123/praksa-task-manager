@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PraksaApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12790808ba205b5ce09c947834c91189824354d7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9a9ac34c53146f8d8cf4a1759ef1ebf34b9e945c")]
 [assembly: System.Reflection.AssemblyProductAttribute("PraksaApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PraksaApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

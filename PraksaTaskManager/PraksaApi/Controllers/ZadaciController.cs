@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using PraksaApi.Data;
 using PraksaApi.Models;
 using PraksaApi.Models.DTO;
@@ -74,7 +76,99 @@ public class ZadaciController : ControllerBase
         _context.SaveChanges();
         return NoContent();
     }
+    
+    [HttpPost("ZadaciKojimaRokNijeProsao")]
+    public ActionResult<IEnumerable<ZadaciDTO>> AktivniZadaci()
+    {
+        var rezultat = _context.Zadaci
+        .Where(z => z.Rok>=DateTime.Today)
+        .Select(z => new ZadaciDTO
+        {
+            Naziv=z.Naziv,
+            Opis=z.Opis,
+            DatumKreiranja=z.DatumKreiranja,
+            Rok=z.Rok,
+            PrioritetId=z.PrioritetId,
+            ProjektiId=z.ProjektiId,
+            KorisnikId=z.KorisnikId,
+            StatusId=z.StatusId
+            })
+        .ToList();
+        return Ok(rezultat);
+    }
+    [HttpPost("SortiraiZadaciPoRokuPaPoPrezimenu")]
+    public ActionResult<IEnumerable<object>> SortiraniZadaciPoRN()
+    {
+        var rezultat = _context.Zadaci
+        .Include(z=>z.Status)
+        .Include(z=>z.Korisnik)
+        .Include(z=>z.Projekti)
+        .Include(z=>z.Prioritet)
+        .OrderBy(z=>z.Rok)
+        .ThenBy(z=>z.Naziv)
+        .Select(z => new 
+        {
+            z.Id,
+            NazivZadatka=z.Naziv,
+            z.Korisnik.Ime,
+            z.Korisnik.Prezime,
+            NazivProjekta=z.Projekti.Naziv,
+            Status=z.Status.Naziv,
+            z.Rok
+            })
+        .ToList();
+        return Ok(rezultat);
+    }
+    [HttpPost("NezavrseniZadaciKojimaJeRokProsao")]
+    public ActionResult<IEnumerable<object>> NezavrseniZadaci()
+    {
+        var rezultat = _context.Zadaci
+        .Include(z=>z.Status)
+        .Include(z=>z.Korisnik)
+        .Where(z => z.Rok<DateTime.Today && z.Status.Naziv!="ZAVRSEN")
+        
+        .Select(z => new
+        {
+            z.Naziv,
+            z.Korisnik.Ime,
+            z.Korisnik.Prezime,
+            NazivProjekta=z.Projekti.Naziv,
+            z.Rok,
+            KasniDana=DateTime.Today-z.Rok
+            })
+        .OrderBy(z=>z.KasniDana)
+        .ToList();
+        return Ok(rezultat);
+    }
 
+    [HttpPost("BrojKomentaraPoZadatku")]
+    public ActionResult<IEnumerable<object>> BrojKomPoZad()
+    {
+        var rezultat = _context.Zadaci
+        .Include(z=>z.Komentaris)      
+        .Select(z => new
+        {
+            z.Naziv,
+            BrojKomentara=z.Komentaris.Count()
+            })
+        .OrderByDescending(z=>z.BrojKomentara)
+        .ToList();
+        return Ok(rezultat);
+    }
+
+     [HttpPost("ZadaciBezKomentara")]
+    public ActionResult<IEnumerable<object>> ZadaciBezKomentara()
+    {
+        var rezultat = _context.Zadaci
+        .Include(z=>z.Komentaris)
+        .Where(z=>!z.Komentaris.Any())
+        .Select(z => new 
+        {
+            z.Naziv,
+            })
+            .ToList();
+        return Ok(rezultat);
+    }
 
 
 
