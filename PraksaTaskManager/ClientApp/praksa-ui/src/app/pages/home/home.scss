@@ -1,0 +1,48 @@
+.layout{
+    display:flex;
+    min-height: 100vh;
+    align-items: stretch;
+}
+.header{
+    background-color: red;
+    color:white;
+    text-align:center;
+    padding:1rem;
+    margin-top: 0;
+}
+.footer{
+     background-color: greenyellow;
+    color:white;
+    text-align:center;
+    padding:1rem;
+}
+.glavna{
+    padding:2rem;
+    flex:1;
+    background-color: purple;
+}
+.menu{
+background-color: blue;
+width: 100px;
+padding: 1rem;
+color:white;
+}
+.menu ul{
+    list-style: none;
+    padding: 0;
+}
+.menu li{
+    padding: 0.75em;
+}
+.middle{
+    display:flex;
+    flex:1;
+}
+.desna{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+}
+.header h1{
+    margin:0;
+}
