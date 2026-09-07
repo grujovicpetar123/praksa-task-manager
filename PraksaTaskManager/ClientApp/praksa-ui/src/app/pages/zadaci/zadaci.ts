@@ -19,5 +19,8 @@ export class Zadaci {
     this.zadacis = data as any[];
   });
 }
+otvoriDijalog(){
+        console.log('Dugme je kliknuto');
+      };
 }
 

@@ -18,4 +18,7 @@ export class Korisnici {
       this.korisnicis = data as any[];
     });
   }
+  otvoriDijalog(){
+        console.log('Dugme je kliknuto');
+      };
 }

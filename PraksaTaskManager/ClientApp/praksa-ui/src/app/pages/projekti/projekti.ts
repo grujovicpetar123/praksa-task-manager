@@ -17,6 +17,9 @@ export class Projekti {
       this.projektiservice.getProjekti().subscribe((data:any) => {
         console.log(data);
         this.projektis = data as any[];
-      });
+      });}
+      otvoriDijalog(){
+        console.log('Dugme je kliknuto');
+      };
     }
-}
+
