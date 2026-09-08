@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Korisniciservice } from '../../services/korisniciservice';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { KorisniciDialog } from '../../dialog/korisnici-dialog/korisnici-dialog';
 
 @Component({
   imports: [MatTableModule ],
@@ -11,7 +13,8 @@ import { MatTableModule } from '@angular/material/table';
 export class Korisnici {
   kolone: string[] = ['id', 'ime', 'prezime','email','aktivan'];
   korisnicis: any[] = [];
-    constructor(private korisniciservice:Korisniciservice) {}
+  
+    constructor(private korisniciservice:Korisniciservice, private dialog: MatDialog) {}
     ngOnInit() {
     this.korisniciservice.getKorisnici().subscribe((data:any) => {
       console.log(data);
@@ -19,6 +22,6 @@ export class Korisnici {
     });
   }
   otvoriDijalog(){
-        console.log('Dugme je kliknuto');
+        this.dialog.open(KorisniciDialog);
       };
 }
