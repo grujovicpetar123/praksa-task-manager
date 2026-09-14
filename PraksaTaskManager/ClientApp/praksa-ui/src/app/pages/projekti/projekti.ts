@@ -20,8 +20,15 @@ export class Projekti {
         console.log(data);
         this.projektis = data as any[];
       });}
-      otvoriDijalog(){
-        this.dialog.open(ProjektiDialog);
-      };
-    }
+         otvoriDijalog() {
+            const ref = this.dialog.open(ProjektiDialog);
+            ref.afterClosed().subscribe(result => {
+              if (result) {
+                this.projektiservice.getProjekti().subscribe(data =>{
+                  this.projektis = data as any[];
+                });
+          }
+        });
+          }
+        }
 

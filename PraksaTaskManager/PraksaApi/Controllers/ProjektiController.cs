@@ -30,7 +30,6 @@ public class ProjektiController : ControllerBase
             Projekti projekti1 = new Projekti();
             projekti1.Naziv = projekti.Naziv;
             projekti1.Opis = projekti.Opis;
-            projekti1.DatumKreiranja = DateTime.Now;
             projekti1.Aktivan = projekti.Aktivan;
             _context.Projekti.Add(projekti1);
             _context.SaveChanges();
@@ -60,7 +59,6 @@ public class ProjektiController : ControllerBase
         return NotFound();
         projekti1.Naziv = projekti.Naziv;
         projekti1.Opis = projekti.Opis;
-        projekti1.DatumKreiranja = DateTime.Now;
         projekti1.Aktivan = projekti.Aktivan;
         _context.SaveChanges();
         return NoContent();
@@ -74,7 +72,6 @@ public class ProjektiController : ControllerBase
         {
             Naziv=p.Naziv,
             Opis=p.Opis,
-            DatumKreiranja=p.DatumKreiranja,
             Aktivan=p.Aktivan
             })
         .ToList();

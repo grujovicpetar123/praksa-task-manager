@@ -7,7 +7,7 @@ public class KorisniciDTO
 {
     
 
-    public DateTime? DatumKreiranja { get; set; }
+
 
     public string Ime { get; set; } = null!;
 

@@ -17,7 +17,7 @@ public class ZadaciDTO
 
     public DateTime? Rok { get; set; }
 
-    public DateTime? DatumKreiranja { get; set; }
+   
 
     public int? KorisnikId { get; set; }
 

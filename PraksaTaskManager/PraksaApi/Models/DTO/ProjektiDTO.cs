@@ -11,7 +11,6 @@ public class ProjektiDTO
 
     public string? Opis { get; set; }
 
-    public DateTime? DatumKreiranja { get; set; }
 
     public bool? Aktivan { get; set; }
 

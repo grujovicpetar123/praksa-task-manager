@@ -1,0 +1,58 @@
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 480px;
+  padding: 16px 4px 8px 4px;
+}
+ 
+mat-form-field {
+  width: 100%;
+}
+h2[mat-dialog-title]
+{
+    color:#2c3e50;
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 600;
+    padding: 16px 24px 0px 24px;
+}
+ 
+mat-dialog-actions {
+  padding: 16px 24px;
+  border-top:1px solid #eee;
+  margin-top:4px;
+}
+h2[mat-dialog-title]
+{
+    color:#2c3e50;
+    font-size: 1.3rem;
+    margin-bottom: 0;
+}
+mat-checkbox{
+    margin:6px 0 10px 0;
+}
+button[mat-flat-button]{
+    background-color: 1abc9c;
+    color:white;
+    padding:0 20px;
+    border-radius: 4px;
+}
+button[mat-flat-button]:hover{
+    background-color: #16a085;
+}
+button[mat-button]{
+    color:#7f8c8d;
+}
+button[mat-button]:hover{
+    background-color: #34405e;
+}
+input:focus, textarea:focus{
+    outline:none;
+}
+form{
+    padding:0 20px;
+}
+textarea{
+    resize:none;
+}

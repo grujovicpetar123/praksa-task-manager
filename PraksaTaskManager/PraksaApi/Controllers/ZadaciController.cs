@@ -69,7 +69,7 @@ public class ZadaciController : ControllerBase
         zadaci1.Opis = zadaci.Opis;
         zadaci1.DatumKreiranja = DateTime.Now;
         zadaci1.Rok = zadaci.Rok;
-        zadaci1.StatusId = zadaci.StatusId;
+       zadaci1.StatusId = zadaci.StatusId;
         zadaci1.PrioritetId = zadaci.PrioritetId;
         zadaci1.KorisnikId = zadaci.KorisnikId;
         zadaci1.ProjektiId = zadaci.ProjektiId;
@@ -86,12 +86,12 @@ public class ZadaciController : ControllerBase
         {
             Naziv=z.Naziv,
             Opis=z.Opis,
-            DatumKreiranja=z.DatumKreiranja,
+          //  DatumKreiranja=z.DatumKreiranja,
             Rok=z.Rok,
             PrioritetId=z.PrioritetId,
             ProjektiId=z.ProjektiId,
             KorisnikId=z.KorisnikId,
-            StatusId=z.StatusId
+           StatusId=z.StatusId
             })
         .ToList();
         return Ok(rezultat);

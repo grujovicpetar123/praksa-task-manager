@@ -1,1 +1,149 @@
-<p>zadaci-dialog works!</p>
+<h2 mat-dialog-title>Novi zadatak</h2>
+ 
+<form [formGroup]="forma" (ngSubmit)="sacuvaj()">
+ 
+  <mat-dialog-content>
+ 
+    <!-- NAZIV -->
+<mat-form-field appearance="outline">
+<mat-label>Naziv zadatka</mat-label>
+ 
+      <input
+        matInput
+        type="text"
+        formControlName="naziv"
+        placeholder="Unesite naziv zadatka">
+</mat-form-field>
+ 
+ 
+    <!-- OPIS -->
+<mat-form-field appearance="outline">
+<mat-label>Opis</mat-label>
+ 
+      <textarea
+        matInput
+        rows="4"
+        formControlName="opis"
+        placeholder="Unesite opis zadatka">
+</textarea>
+</mat-form-field>
+ 
+ 
+    <!-- ROK -->
+<mat-form-field appearance="outline">
+<mat-label>Rok</mat-label>
+ 
+      <input
+        matInput
+        type="date"
+        formControlName="rok">
+</mat-form-field>
+ 
+ 
+    <!-- KORISNIK -->
+<mat-form-field appearance="outline">
+<mat-label>Korisnik</mat-label>
+ 
+      <mat-select formControlName="korisnikId">
+ 
+        @for (korisnik of korisnici; track korisnik.id) {
+ 
+          <mat-option [value]="korisnik.id">
+            {{ korisnik.ime }} {{ korisnik.prezime }}
+</mat-option>
+ 
+        }
+ 
+      </mat-select>
+</mat-form-field>
+ 
+ 
+    <!-- PROJEKAT -->
+<mat-form-field appearance="outline">
+<mat-label>Projekat</mat-label>
+ 
+      <mat-select formControlName="projekatId">
+ 
+        @for (projekat of projekti; track projekat.id) {
+ 
+          <mat-option [value]="projekat.id">
+            {{ projekat.naziv }}
+</mat-option>
+ 
+        }
+ 
+      </mat-select>
+</mat-form-field>
+ 
+ <!-- STATUS -->
+
+<mat-form-field appearance="outline">
+
+<mat-label>Status</mat-label>
+
+ 
+
+      <mat-select formControlName="statusId">
+
+ 
+
+        @for (status of statusi; track status.statusId) {
+
+ 
+
+          <mat-option [value]="status.statusId">
+
+            {{ status.naziv }}
+
+</mat-option>
+
+ 
+
+        }
+
+ 
+
+      </mat-select>
+
+</mat-form-field>
+    
+ 
+ 
+    <!-- PRIORITET -->
+<mat-form-field appearance="outline">
+<mat-label>Prioritet</mat-label>
+ 
+      <mat-select formControlName="prioritetId">
+ 
+        @for (prioritet of prioriteti; track prioritet.id) {
+ 
+          <mat-option [value]="prioritet.id">
+            {{ prioritet.naziv }}
+</mat-option>
+ 
+        }
+ 
+      </mat-select>
+</mat-form-field>
+ 
+  </mat-dialog-content>
+ 
+ 
+  <mat-dialog-actions align="end">
+ 
+    <button
+      mat-button
+      type="button"
+      (click)="zatvori()">
+      Otkaži
+</button>
+ 
+    <button
+      mat-flat-button
+      type="submit">
+      Sačuvaj
+</button>
+ 
+  </mat-dialog-actions>
+ 
+</form>

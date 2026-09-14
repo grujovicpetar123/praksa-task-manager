@@ -1,1 +1,70 @@
-<p>korisnici-dialog works!</p>
+<h2 mat-dialog-title>Novi korisnik</h2>
+ 
+<form [formGroup]="forma" (ngSubmit)="sacuvaj()">
+ 
+  <mat-dialog-content>
+ 
+    <!-- Ime -->
+<mat-form-field appearance="outline">
+<mat-label>Ime korisnika</mat-label>
+ 
+      <input
+        matInput
+        type="text"
+        formControlName="ime"
+        placeholder="Unesite ime korisnika">
+</mat-form-field>
+
+<!-- Ime -->
+<mat-form-field appearance="outline">
+<mat-label>Prezime korisnika</mat-label>
+ 
+      <input
+        matInput
+        type="text"
+        formControlName="prezime"
+        placeholder="Unesite prezime korisnika">
+</mat-form-field>
+ 
+ 
+    <!-- Email -->
+<mat-form-field appearance="outline">
+<mat-label>Email</mat-label>
+ 
+      <textarea
+        matInput
+        type="text"
+        formControlName="email"
+        placeholder="Unesite email korisnika">
+</textarea>
+</mat-form-field>
+ 
+ 
+    <!-- Aktivan -->
+        <mat-checkbox formControlName="aktivan"></mat-checkbox>
+
+ 
+ 
+    
+ 
+  </mat-dialog-content>
+ 
+ 
+  <mat-dialog-actions align="end">
+ 
+    <button
+      mat-button
+      type="button"
+      (click)="zatvori()">
+      Otkaži
+</button>
+ 
+    <button
+      mat-flat-button
+      type="submit">
+      Sačuvaj
+</button>
+ 
+  </mat-dialog-actions>
+ 
+</form>

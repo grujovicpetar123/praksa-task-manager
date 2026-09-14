@@ -31,7 +31,6 @@ public class KorisniciController : ControllerBase
             korisnici1.Ime = korisnici.Ime;
             korisnici1.Prezime = korisnici.Prezime;
             korisnici1.Email = korisnici.Email;
-            korisnici1.DatumKreiranja = DateTime.Now;
             korisnici1.Aktivan = korisnici.Aktivan;
             _context.Korisnici.Add(korisnici1);
             _context.SaveChanges();
@@ -94,8 +93,7 @@ public class KorisniciController : ControllerBase
             Prezime = k.Prezime,
             Email = k.Email,
             Aktivan=k.Aktivan,
-            DatumKreiranja=k.DatumKreiranja
-        })
+                    })
         .ToList();
         return Ok(rezultat);
     }

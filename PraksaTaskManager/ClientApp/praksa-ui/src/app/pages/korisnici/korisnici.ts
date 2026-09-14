@@ -21,7 +21,14 @@ export class Korisnici {
       this.korisnicis = data as any[];
     });
   }
-  otvoriDijalog(){
-        this.dialog.open(KorisniciDialog);
-      };
-}
+   otvoriDijalog() {
+      const ref = this.dialog.open(KorisniciDialog);
+      ref.afterClosed().subscribe(result => {
+        if (result) {
+          this.korisniciservice.getKorisnici().subscribe(data =>{
+            this.korisnicis = data as any[];
+          });
+    }
+  });
+    }
+  }

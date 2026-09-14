@@ -1,1 +1,58 @@
-<p>projekti-dialog works!</p>
+<h2 mat-dialog-title>Novi projekat</h2>
+ 
+<form [formGroup]="forma" (ngSubmit)="sacuvaj()">
+ 
+  <mat-dialog-content>
+ 
+    <!-- Ime -->
+<mat-form-field appearance="outline">
+<mat-label>Naziv projekta</mat-label>
+ 
+      <input
+        matInput
+        type="text"
+        formControlName="naziv"
+        placeholder="Unesite naziv projekta">
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+<mat-label>Opis</mat-label>
+ 
+      <textarea
+        matInput
+        rows="4"
+        formControlName="opis"
+        placeholder="Unesite opis projekta">
+</textarea>
+</mat-form-field>
+ 
+ 
+ 
+    <!-- Aktivan -->
+        <mat-checkbox formControlName="aktivan"></mat-checkbox>
+
+ 
+ 
+    
+ 
+  </mat-dialog-content>
+ 
+ 
+  <mat-dialog-actions align="end">
+ 
+    <button
+      mat-button
+      type="button"
+      (click)="zatvori()">
+      Otkaži
+</button>
+ 
+    <button
+      mat-flat-button
+      type="submit">
+      Sačuvaj
+</button>
+ 
+  </mat-dialog-actions>
+ 
+</form>
