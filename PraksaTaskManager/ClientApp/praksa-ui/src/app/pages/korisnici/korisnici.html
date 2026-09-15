@@ -1,61 +1,114 @@
 <div class="header">
       <h2>Korisnici</h2>
-<button (click)="otvoriDijalog()">Dodaj</button>
-<button (click)="prikaziSveKorisnike()">Svi</button>
-<button (click)="prikaziAktivneKorisnike()">Aktivni</button>
-<button (click)="prikaziPoPrezimenu()">Prezime</button>
-<button (click)="prikaziBrojZadataka()">Broj</button>
+      <button (click)="otvoriDijalog()">Dodaj</button>
+      <button (click)="prikaziSveKorisnike()">Svi</button>
+      <button (click)="prikaziAktivneKorisnike()">Aktivni</button>
+      <button (click)="prikaziPoPrezimenu()">Prezime</button>
+      <button (click)="prikaziBrojZadataka()">Broj</button>
+      <button (click)="prikaziBrojKomentara()">Komentari</button>
 </div>
-<table mat-table [dataSource]="korisnicis">
- 
-  <ng-container matColumnDef="id">
-<th mat-header-cell *matHeaderCellDef>ID</th>
-<td mat-cell *matCellDef="let korisnik">
-      {{ korisnik.id }}
-</td>
-</ng-container>
- 
-  <ng-container matColumnDef="ime">
-<th mat-header-cell *matHeaderCellDef>Ime</th>
-<td mat-cell *matCellDef="let korisnik">
-      {{ korisnik.ime }}
-</td>
-</ng-container>
- 
-  <ng-container matColumnDef="prezime">
-<th mat-header-cell *matHeaderCellDef>Prezime</th>
-<td mat-cell *matCellDef="let korisnik">
-      {{ korisnik.prezime }}
-</td>
-</ng-container>
- <ng-container matColumnDef="email">
-<th mat-header-cell *matHeaderCellDef>Email</th>
-<td mat-cell *matCellDef="let korisnik">
-      {{ korisnik.email }}
-</td>
-</ng-container>
-<ng-container matColumnDef="aktivan">
-<th mat-header-cell *matHeaderCellDef>Aktivan</th>
-<td mat-cell *matCellDef="let korisnik">
-      {{ korisnik.aktivan }}
-</td>
-</ng-container>
- <ng-container matColumnDef="akcije">
-<th mat-header-cell *matHeaderCellDef>Akcije</th>
-<td mat-cell *matCellDef="let korisnik">
-      <button mat-icon-button (click)="obrisi(korisnik.id)">
-            <mat-icon>delete</mat-icon>
-      </button>
-</td>
-</ng-container>
+<div class="tabele" *ngIf="!prikazujemIzvestajZadataka && !prikazujemIzvestajKomentara">
+<table mat-table [dataSource]="korisnicis" >
 
-<ng-container matColumnDef="brojZadataka">
-<th mat-header-cell *matHeaderCellDef>Broj zadataka</th>
-<td mat-cell *matCellDef="let korisnik">
-      {{korisnik.brojZadataka}}
-</td>
-</ng-container>
-  <tr mat-header-row *matHeaderRowDef="kolone"></tr>
-<tr mat-row *matRowDef="let row; columns: kolone;"></tr>
- 
+      <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let korisnik">
+                  {{ korisnik.id }}
+            </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ime">
+            <th mat-header-cell *matHeaderCellDef>Ime</th>
+            <td mat-cell *matCellDef="let korisnik">
+                  {{ korisnik.ime }}
+            </td>
+      </ng-container>
+
+      <ng-container matColumnDef="prezime">
+            <th mat-header-cell *matHeaderCellDef>Prezime</th>
+            <td mat-cell *matCellDef="let korisnik">
+                  {{ korisnik.prezime }}
+            </td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let korisnik">
+                  {{ korisnik.email }}
+            </td>
+      </ng-container>
+      <ng-container matColumnDef="aktivan">
+            <th mat-header-cell *matHeaderCellDef>Aktivan</th>
+            <td mat-cell *matCellDef="let korisnik">
+                  {{ korisnik.aktivan }}
+            </td>
+      </ng-container>
+      <ng-container matColumnDef="akcije">
+            <th mat-header-cell *matHeaderCellDef>Akcije</th>
+            <td mat-cell *matCellDef="let korisnik">
+                  <button mat-icon-button (click)="obrisi(korisnik.id)">
+                        <mat-icon>delete</mat-icon>
+                  </button>
+            </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="kolone"></tr>
+      <tr mat-row *matRowDef="let row; columns: kolone;"></tr>
+
 </table>
+</div>
+
+<div class="tabele2" *ngIf="prikazujemIzvestajZadataka && !prikazujemIzvestajKomentara">
+<table mat-table [dataSource]="izvestajBrojZadataka">
+<ng-container matColumnDef="ime">
+            <th mat-header-cell *matHeaderCellDef>Ime</th>
+            <td mat-cell *matCellDef="let k">
+                  {{ k.ime }}
+            </td>
+      </ng-container>
+
+      <ng-container matColumnDef="prezime">
+            <th mat-header-cell *matHeaderCellDef>Prezime</th>
+            <td mat-cell *matCellDef="let k">
+                  {{ k.prezime }}
+            </td>
+      </ng-container>
+        <ng-container matColumnDef="brojZadataka">
+            <th mat-header-cell *matHeaderCellDef>Broj zadataka</th>
+            <td mat-cell *matCellDef="let k">
+                  {{k.brojZadataka}}
+            </td>
+      </ng-container>
+
+       <tr mat-header-row *matHeaderRowDef="koloneIzvestajZadataka"></tr>
+      <tr mat-row *matRowDef="let row; columns: koloneIzvestajZadataka;"></tr>
+
+</table>
+</div>
+
+<div class="tabele3" *ngIf="prikazujemIzvestajKomentara && !prikazujemIzvestajZadataka">
+<table mat-table [dataSource]="izvestajBrojKomentara">
+<ng-container matColumnDef="ime">
+            <th mat-header-cell *matHeaderCellDef>Ime</th>
+            <td mat-cell *matCellDef="let k2">
+                  {{ k2.ime }}
+            </td>
+      </ng-container>
+
+      <ng-container matColumnDef="prezime">
+            <th mat-header-cell *matHeaderCellDef>Prezime</th>
+            <td mat-cell *matCellDef="let k2">
+                  {{ k2.prezime }}
+            </td>
+      </ng-container>
+        <ng-container matColumnDef="brojKomentara">
+            <th mat-header-cell *matHeaderCellDef>Broj komentara</th>
+            <td mat-cell *matCellDef="let k2">
+                  {{ k2.brojKomentara }}
+            </td>
+      </ng-container>
+
+       <tr mat-header-row *matHeaderRowDef="koloneIzvestajBrojKomentara"></tr>
+      <tr mat-row *matRowDef="let row; columns: koloneIzvestajBrojKomentara;"></tr>
+
+</table>
+</div>

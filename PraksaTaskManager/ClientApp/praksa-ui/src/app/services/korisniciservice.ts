@@ -10,4 +10,5 @@ export class Korisniciservice {
     getAktivniKorisnici(){return this.http.get('http://localhost:5184/Korisnici/GetAktivniKorisnici');}
     getKorisniciPoPrezimenu(){return this.http.get('http://localhost:5184/Korisnici/KorisniciPoPrezimenu'); }
     getBrojZadatakaPoKorisniku(){return this.http.post('http://localhost:5184/Korisnici/BrojZadatakPoKorisniku',{});}
+    getBrojKomentaraPoKorisniku(){return this.http.post('http://localhost:5184/Korisnici/BrojKomentaraPoKorisniku',{});}
 }
