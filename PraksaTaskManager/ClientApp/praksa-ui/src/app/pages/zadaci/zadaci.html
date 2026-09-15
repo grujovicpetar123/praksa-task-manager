@@ -1,6 +1,8 @@
 <div class="header">
       <h2>Zadaci</h2>
 <button (click)="otvoriDijalog()">Dodaj</button>
+<button (click)="prikaziRokNijeProsao()">Rok</button>
+<button (click)="prikaziSveZadatke()">Svi</button>
 </div>
 <table mat-table [dataSource]="zadacis">
  
@@ -28,6 +30,15 @@
 <th mat-header-cell *matHeaderCellDef>Rok</th>
 <td mat-cell *matCellDef="let zadatak">
       {{ zadatak.rok }}
+</td>
+</ng-container>
+
+<ng-container matColumnDef="akcije">
+<th mat-header-cell *matHeaderCellDef>Akcije</th>
+<td mat-cell *matCellDef="let projekat">
+      <button mat-icon-button (click)="obrisi(projekat.id)">
+            <mat-icon>delete</mat-icon>
+      </button>
 </td>
 </ng-container>
 

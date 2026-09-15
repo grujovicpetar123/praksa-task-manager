@@ -10,5 +10,7 @@ export class Zadaciservice {
     getStatusi() {   return this.http.get('http://localhost:5184/Status'); }
     getPrioriteti() {   return this.http.get('http://localhost:5184/Prioriteti'); }
     dodajZadatak(zadatak:any) { return this.http.post('http://localhost:5184/Zadaci', zadatak);}
+    obrisiZadatak(id:number){return this.http.delete(`http://localhost:5184/Zadaci/${id}`);}
+    getZadaciRokNijeProsao(){return this.http.post(`http://localhost:5184/Zadaci/ZadaciKojimaRokNijeProsao`,{});}
     
 }

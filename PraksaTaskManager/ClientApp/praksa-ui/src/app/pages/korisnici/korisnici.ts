@@ -3,15 +3,16 @@ import { Korisniciservice } from '../../services/korisniciservice';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { KorisniciDialog } from '../../dialog/korisnici-dialog/korisnici-dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  imports: [MatTableModule ],
+  imports: [MatTableModule,MatIconModule],
   selector: 'app-korisnici',
   styleUrl: './korisnici.scss',
   templateUrl: './korisnici.html',
 })
 export class Korisnici {
-  kolone: string[] = ['id', 'ime', 'prezime','email','aktivan'];
+  kolone: string[] = ['id', 'ime', 'prezime','email','aktivan','akcije', 'brojZadataka'];
   korisnicis: any[] = [];
   
     constructor(private korisniciservice:Korisniciservice, private dialog: MatDialog) {}
@@ -31,4 +32,37 @@ export class Korisnici {
     }
   });
     }
+
+    obrisi(id:number){
+      if(confirm('Da li ste sigurni da zelite da obrisete korisnika')){
+        this.korisniciservice.obrisiKorisnika(id).subscribe(()=>{
+          this.korisnicis=this.korisnicis.filter(k=>k.id!==id);
+        });
+      }
+    }
+
+    prikaziAktivneKorisnike(){
+      this.korisniciservice.getAktivniKorisnici().subscribe((data)=>{
+        this.korisnicis=data as any[];
+      });
+    }
+    prikaziSveKorisnike(){
+      this.korisniciservice.getKorisnici().subscribe((data)=>{
+        this.korisnicis=data as any[];
+      });
+    }
+    prikaziPoPrezimenu()
+    {
+      this.korisniciservice.getKorisniciPoPrezimenu().subscribe((data)=>{
+        this.korisnicis=data as any[];
+      });
+    }
+
+    prikaziBrojZadataka()
+    {
+      this.korisniciservice.getBrojZadatakaPoKorisniku().subscribe((data)=>{
+        this.korisnicis=data as any[];
+      });
+    }
+    
   }

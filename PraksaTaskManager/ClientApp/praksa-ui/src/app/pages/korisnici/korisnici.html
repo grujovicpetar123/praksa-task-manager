@@ -1,6 +1,10 @@
 <div class="header">
       <h2>Korisnici</h2>
 <button (click)="otvoriDijalog()">Dodaj</button>
+<button (click)="prikaziSveKorisnike()">Svi</button>
+<button (click)="prikaziAktivneKorisnike()">Aktivni</button>
+<button (click)="prikaziPoPrezimenu()">Prezime</button>
+<button (click)="prikaziBrojZadataka()">Broj</button>
 </div>
 <table mat-table [dataSource]="korisnicis">
  
@@ -34,6 +38,21 @@
 <th mat-header-cell *matHeaderCellDef>Aktivan</th>
 <td mat-cell *matCellDef="let korisnik">
       {{ korisnik.aktivan }}
+</td>
+</ng-container>
+ <ng-container matColumnDef="akcije">
+<th mat-header-cell *matHeaderCellDef>Akcije</th>
+<td mat-cell *matCellDef="let korisnik">
+      <button mat-icon-button (click)="obrisi(korisnik.id)">
+            <mat-icon>delete</mat-icon>
+      </button>
+</td>
+</ng-container>
+
+<ng-container matColumnDef="brojZadataka">
+<th mat-header-cell *matHeaderCellDef>Broj zadataka</th>
+<td mat-cell *matCellDef="let korisnik">
+      {{korisnik.brojZadataka}}
 </td>
 </ng-container>
   <tr mat-header-row *matHeaderRowDef="kolone"></tr>
